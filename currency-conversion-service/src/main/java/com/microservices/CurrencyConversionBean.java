@@ -8,7 +8,7 @@ public class CurrencyConversionBean {
 	private int quantity;
 	private int conversionMultiple;
 	private int totalAmount;
-	private int port;
+	private int port; 
 
 	CurrencyConversionBean() {
 	}
