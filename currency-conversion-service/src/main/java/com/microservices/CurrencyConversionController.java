@@ -3,6 +3,8 @@ package com.microservices;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.apache.logging.log4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,6 +17,8 @@ public class CurrencyConversionController {
 	
 	@Autowired
 	private CurrencyExcahngeProxy proxy;
+	
+	Logger logg=(Logger) LoggerFactory.getLogger(this.getClass());
 
 	@GetMapping("/currency-convertor/from/{from}/to/{to}/quantity/{quantity}")
 	public CurrencyConversionBean convertCourrency(@PathVariable String from, @PathVariable String to,
@@ -42,6 +46,8 @@ public class CurrencyConversionController {
 		System.out.println("this is by feign Clients .............");
 		
 		CurrencyConversionBean response = proxy.retrieveExchangeValue(from, to);
+		
+		logg.info("{}",response);
 		
 		return new CurrencyConversionBean(response.getId(), 
 				from, to, quantity, response.getConversionMultiple(),
