@@ -14,11 +14,10 @@ public class NetflixNamingServerApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(NetflixNamingServerApplication.class, args);
 	}
-	
+
 	@Bean
 	public Sampler defaultSampler() {
 		return Sampler.ALWAYS_SAMPLE;
 	}
-	
 
 }
